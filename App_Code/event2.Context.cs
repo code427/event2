@@ -27,4 +27,5 @@ public partial class event2Entities : DbContext
     public virtual DbSet<image> images { get; set; }
     public virtual DbSet<user> users { get; set; }
     public virtual DbSet<reservation> reservations { get; set; }
+    public virtual DbSet<eventType> eventTypes { get; set; }
 }

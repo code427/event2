@@ -4,21 +4,29 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="event2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="event2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="event">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="time" Type="datetime" Nullable="false" />
+          <Property Name="time" Type="smalldatetime" Nullable="false" />
           <Property Name="duration" Type="int" Nullable="false" />
           <Property Name="location" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="deadline" Type="datetime" Nullable="false" />
+          <Property Name="deadline" Type="smalldatetime" Nullable="false" />
           <Property Name="description" Type="nchar" MaxLength="255" />
           <Property Name="attendance" Type="int" />
           <Property Name="fee" Type="int" />
           <Property Name="organizer" Type="nchar" MaxLength="10" />
+          <Property Name="type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="eventType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="image">
           <Key>
@@ -58,6 +66,18 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           <Property Name="email" Type="nchar" MaxLength="255" />
           <Property Name="rol" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_event_eventType">
+          <End Role="eventType" Type="Self.eventType" Multiplicity="1" />
+          <End Role="event" Type="Self.event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eventType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="event">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_image_event">
           <End Role="event" Type="Self.event" Multiplicity="1" />
           <End Role="image" Type="Self.image" Multiplicity="*" />
@@ -108,6 +128,7 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
         </Association>
         <EntityContainer Name="event2ModelStoreContainer">
           <EntitySet Name="event" EntityType="Self.event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventType" EntityType="Self.eventType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="image" EntityType="Self.image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="reservation" EntityType="Self.reservation" store:Type="Tables" store:Schema="dbo">
@@ -118,6 +139,10 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
     [reservation].[registerTime] AS [registerTime]
     FROM [dbo].[reservation] AS [reservation]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_event_eventType" Association="Self.FK_event_eventType">
+            <End Role="eventType" EntitySet="eventType" />
+            <End Role="event" EntitySet="event" />
+          </AssociationSet>
           <AssociationSet Name="FK_image_event" Association="Self.FK_image_event">
             <End Role="event" EntitySet="event" />
             <End Role="image" EntitySet="image" />
@@ -135,8 +160,7 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
             <End Role="reservation" EntitySet="reservation" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="event2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -146,16 +170,18 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="time" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="duration" Type="Int32" Nullable="false" />
           <Property Name="location" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="deadline" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="deadline" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="description" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
           <Property Name="attendance" Type="Int32" />
           <Property Name="fee" Type="Int32" />
           <Property Name="organizer" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="images" Relationship="Self.FK_image_event" FromRole="event" ToRole="image" />
           <NavigationProperty Name="reservations" Relationship="Self.FK_reservation_event" FromRole="event" ToRole="reservation" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="eventType" Relationship="event2Model.FK_event_eventType" FromRole="event" ToRole="eventType" />
         </EntityType>
         <EntityType Name="image">
           <Key>
@@ -268,7 +294,32 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
             <End Role="users" EntitySet="users" />
             <End Role="reservation" EntitySet="reservations" />
           </AssociationSet>
+          <EntitySet Name="eventTypes" EntityType="event2Model.eventType" />
+          <AssociationSet Name="FK_event_eventType" Association="event2Model.FK_event_eventType">
+            <End Role="eventType" EntitySet="eventTypes" />
+            <End Role="event" EntitySet="events" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="eventType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="events" Relationship="event2Model.FK_event_eventType" FromRole="eventType" ToRole="event" />
+        </EntityType>
+        <Association Name="FK_event_eventType">
+          <End Type="event2Model.eventType" Role="eventType" Multiplicity="1" />
+          <End Type="event2Model.event" Role="event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eventType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="event">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -278,6 +329,7 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           <EntitySetMapping Name="events">
             <EntityTypeMapping TypeName="event2Model.event">
               <MappingFragment StoreEntitySet="event">
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="time" ColumnName="time" />
@@ -324,6 +376,14 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
                 <ScalarProperty Name="eventid" ColumnName="eventid" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="registerTime" ColumnName="registerTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventTypes">
+            <EntityTypeMapping TypeName="event2Model.eventType">
+              <MappingFragment StoreEntitySet="eventType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

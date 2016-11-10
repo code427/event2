@@ -4,36 +4,35 @@ using System;
 using System.Web;
 using System.Web.UI;
 using event2;
+using System.Linq;
+
 
 public partial class Account_Login : Page
 {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterHyperLink.NavigateUrl = "Register";
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
-            var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-            if (!String.IsNullOrEmpty(returnUrl))
-            {
-                RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
-            }
+           
         }
 
         protected void LogIn(object sender, EventArgs e)
         {
-            if (IsValid)
+            string _username = txtUsername.Text;
+            string _pass = txtPass.Text;
+            using (event2Entities myEntity = new event2Entities())
             {
-                // Validate the user password
-                var manager = new UserManager();
-                ApplicationUser user = manager.Find(UserName.Text, Password.Text);
+                var user = (from u in myEntity.users
+                            where u.username == _username && u.password == _pass
+                            select u).SingleOrDefault();
                 if (user != null)
                 {
-                    IdentityHelper.SignIn(manager, user, RememberMe.Checked);
-                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                    Session["username"] = _username;
+                    Session["usertype"] = user.rol;
+                    Response.Redirect("~/event/CurrentEvents.aspx");
                 }
                 else
                 {
-                    FailureText.Text = "Invalid username or password.";
-                    ErrorMessage.Visible = true;
+                    lblError.Text = "Username and password doesn't match";
+
                 }
             }
         }

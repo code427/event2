@@ -13,6 +13,8 @@
         <AssociationConnector Association="event2Model.FK_reservation_event" ManuallyRouted="false" />
         <AssociationConnector Association="event2Model.FK_image_user" ManuallyRouted="false" />
         <AssociationConnector Association="event2Model.FK_reservation_user" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="event2Model.eventType" Width="1.5" PointX="4.25" PointY="0.5" />
+        <AssociationConnector Association="event2Model.FK_event_eventType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

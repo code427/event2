@@ -28,9 +28,24 @@ public partial class @event
     public Nullable<int> attendance { get; set; }
     public Nullable<int> fee { get; set; }
     public string organizer { get; set; }
+    public int type { get; set; }
 
     public virtual ICollection<image> images { get; set; }
     public virtual ICollection<reservation> reservations { get; set; }
+    public virtual eventType eventType { get; set; }
+}
+
+public partial class eventType
+{
+    public eventType()
+    {
+        this.events = new HashSet<@event>();
+    }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public virtual ICollection<@event> events { get; set; }
 }
 
 public partial class image
