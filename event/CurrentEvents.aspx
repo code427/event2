@@ -5,10 +5,24 @@
     <asp:Repeater ID="rptCategory" runat="server">
         <ItemTemplate>
             <h3>
-                <asp:Literal ID="ltrType" Text='<%# Eval("Name") %>'  runat="server"></asp:Literal></h3>
+                <asp:Literal ID="ltrType" Text='<%# Eval("Name") %>'  runat="server"></asp:Literal>
+            </h3>
            
-             <asp:BulletedList ID="bllEvents" DataSource='<%# Eval("events") %>' DataTextField="name" DisplayMode="Text" 
-                runat="server"  ></asp:BulletedList>
+        
+              <asp:Repeater ID="Repeater2" runat="server" DataSource='<%# Eval("events") %>'>
+                <HeaderTemplate>
+                    <ul>
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <li>
+                        <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# String.Concat("AddEditEvent.aspx?id=",Eval("id"))%>'></asp:HyperLink></li>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </ul>
+                </FooterTemplate>
+            </asp:Repeater>
+
+
         </ItemTemplate>
     </asp:Repeater>
 </asp:Content>
