@@ -20,6 +20,7 @@
           <Property Name="fee" Type="int" />
           <Property Name="organizer" Type="nchar" MaxLength="10" />
           <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="eventType">
           <Key>
@@ -182,6 +183,7 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           <NavigationProperty Name="reservations" Relationship="Self.FK_reservation_event" FromRole="event" ToRole="reservation" />
           <Property Name="type" Type="Int32" Nullable="false" />
           <NavigationProperty Name="eventType" Relationship="event2Model.FK_event_eventType" FromRole="event" ToRole="eventType" />
+          <Property Name="status" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="image">
           <Key>
@@ -329,6 +331,7 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           <EntitySetMapping Name="events">
             <EntityTypeMapping TypeName="event2Model.event">
               <MappingFragment StoreEntitySet="event">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />

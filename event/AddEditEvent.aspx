@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
       <h1>Add/Edit Event Information</h1>
-    <table>
+     <table>
         <tr><td>Name: </td>
             <td>
                 <asp:TextBox ID="txtName" runat="server"></asp:TextBox>

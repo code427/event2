@@ -29,6 +29,7 @@ public partial class @event
     public Nullable<int> fee { get; set; }
     public string organizer { get; set; }
     public int type { get; set; }
+    public int status { get; set; }
 
     public virtual ICollection<image> images { get; set; }
     public virtual ICollection<reservation> reservations { get; set; }

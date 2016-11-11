@@ -4,11 +4,7 @@
  
     <asp:Repeater ID="rptCategory" runat="server">
         <ItemTemplate>
-            <h3>
-                <asp:Literal ID="ltrType" Text='<%# Eval("Name") %>'  runat="server"></asp:Literal>
-            </h3>
-           
-        
+            <h3>Current Events</h3>
               <asp:Repeater ID="Repeater2" runat="server" DataSource='<%# Eval("events") %>'>
                 <HeaderTemplate>
                     <ul>

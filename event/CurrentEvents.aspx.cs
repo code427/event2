@@ -18,8 +18,10 @@ public partial class Manager_AllByCategory : System.Web.UI.Page
        // else { 
         using (event2Entities myEntities = new event2Entities()) {
 
-            var allTypes = from oneEvent in myEntities.eventTypes.Include("events")
-                                select new { oneEvent.Name, oneEvent.events };
+            var allTypes = from eveType in myEntities.eventTypes
+                          join oneEvent in myEntities.events on eveType.Id equals oneEvent.type
+                               where oneEvent.status==1
+                           select new { eveType.Name, eveType.events };
 
             rptCategory.DataSource = allTypes.ToList();
             rptCategory.DataBind();
