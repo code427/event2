@@ -11,6 +11,8 @@ public partial class event_Logout : System.Web.UI.Page
     {
         Session["username"] = null;
         Session["usertype"] = null;
+        Session["userid"] = null;
+
         Response.Redirect("~/event/CurrentEvents.aspx");
     }
 }

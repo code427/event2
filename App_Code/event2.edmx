@@ -41,14 +41,9 @@
           <Property Name="postDate" Type="datetime" Nullable="false" />
           <Property Name="tag" Type="nchar" MaxLength="255" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WEBSITES\EVENT2\APP_DATA\EVENT2.MDF.dbo.reservation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="reservation">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="eventid" />
-            <PropertyRef Name="userid" />
-            <PropertyRef Name="registerTime" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="eventid" Type="int" Nullable="false" />
@@ -66,6 +61,7 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           <Property Name="phone" Type="int" />
           <Property Name="email" Type="nchar" MaxLength="255" />
           <Property Name="rol" Type="int" Nullable="false" />
+          <Property Name="CWID" Type="int" />
         </EntityType>
         <Association Name="FK_event_eventType">
           <End Role="eventType" Type="Self.eventType" Multiplicity="1" />
@@ -131,15 +127,8 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           <EntitySet Name="event" EntityType="Self.event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="eventType" EntityType="Self.eventType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="image" EntityType="Self.image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reservation" EntityType="Self.reservation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="reservation" EntityType="Self.reservation" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [reservation].[id] AS [id], 
-    [reservation].[eventid] AS [eventid], 
-    [reservation].[userid] AS [userid], 
-    [reservation].[registerTime] AS [registerTime]
-    FROM [dbo].[reservation] AS [reservation]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_event_eventType" Association="Self.FK_event_eventType">
             <End Role="eventType" EntitySet="eventType" />
             <End Role="event" EntitySet="event" />
@@ -212,13 +201,11 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           <Property Name="rol" Type="Int32" Nullable="false" />
           <NavigationProperty Name="images" Relationship="Self.FK_image_user" FromRole="users" ToRole="image" />
           <NavigationProperty Name="reservations" Relationship="Self.FK_reservation_user" FromRole="users" ToRole="reservation" />
+          <Property Name="CWID" Type="Int32" />
         </EntityType>
         <EntityType Name="reservation">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="eventid" />
-            <PropertyRef Name="userid" />
-            <PropertyRef Name="registerTime" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="eventid" Type="Int32" Nullable="false" />
@@ -362,6 +349,7 @@ warning 6002: The table/view 'C:\USERS\ZHENGDONG\DOCUMENTS\VISUAL STUDIO 2013\WE
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="event2Model.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="CWID" ColumnName="CWID" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />

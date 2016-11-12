@@ -6,14 +6,14 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d50c610d89504ac9aa1b7f50f2934bca" Name="Diagram1">
         <EntityTypeShape EntityType="event2Model.event" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="event2Model.image" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="event2Model.user" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="event2Model.reservation" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="event2Model.image" Width="1.5" PointX="1" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="event2Model.user" Width="1.5" PointX="5.625" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="event2Model.reservation" Width="1.5" PointX="7.125" PointY="2.375" IsExpanded="true" />
         <AssociationConnector Association="event2Model.FK_image_event" ManuallyRouted="false" />
         <AssociationConnector Association="event2Model.FK_reservation_event" ManuallyRouted="false" />
         <AssociationConnector Association="event2Model.FK_image_user" ManuallyRouted="false" />
         <AssociationConnector Association="event2Model.FK_reservation_user" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="event2Model.eventType" Width="1.5" PointX="4.25" PointY="0.5" />
+        <EntityTypeShape EntityType="event2Model.eventType" Width="1.5" PointX="2" PointY="0.5" />
         <AssociationConnector Association="event2Model.FK_event_eventType" />
       </Diagram>
     </edmx:Diagrams>

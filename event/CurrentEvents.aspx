@@ -11,7 +11,7 @@
                 </HeaderTemplate>
                 <ItemTemplate>
                     <li>
-                        <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# String.Concat("AddEditEvent.aspx?id=",Eval("id"))%>'></asp:HyperLink></li>
+                        <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# String.Concat("AddEditEvent.aspx?eventid=",Eval("id"))%>'></asp:HyperLink></li>
                 </ItemTemplate>
                 <FooterTemplate>
                     </ul>

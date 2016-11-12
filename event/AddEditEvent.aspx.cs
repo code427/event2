@@ -13,9 +13,9 @@ public partial class event_AddEditEvent : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (!string.IsNullOrEmpty(Request.QueryString.Get("id")))
+        if (!string.IsNullOrEmpty(Request.QueryString.Get("eventid")))
         {
-            _id = Convert.ToInt32(Request.QueryString.Get("id"));
+            _id = Convert.ToInt32(Request.QueryString.Get("eventid"));
         }
         if(!IsPostBack && _id>-1) {
             using (event2Entities myEntity = new event2Entities())
@@ -86,5 +86,10 @@ public partial class event_AddEditEvent : System.Web.UI.Page
             Response.Redirect("~/event/CurrentEvents.aspx");
         
         }
+    }
+    protected void btnRSVP_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Account/Register.aspx?userid=" + Session["userid"] + "&eventid=" + Request.QueryString.Get("eventid"));
+        
     }
 }

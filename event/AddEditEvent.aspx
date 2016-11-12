@@ -1,7 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AddEditEvent.aspx.cs" Inherits="event_AddEditEvent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-      <h1>Add/Edit Event Information</h1>
+    
+    
+    <%if (String.IsNullOrEmpty(Request.QueryString.Get("eventid")))
+      {%>  <h1>Add/Edit Event Information</h1>
+    <%}else{ %>
+    <h1>Event Information</h1>
+    <%} %>
      <table>
         <tr><td>Name: </td>
             <td>
@@ -58,9 +64,16 @@
             </td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
+            <%if (Session["username"] != null && Session["username"].Equals("admin"))
+              { %>
             <td>
                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+            </td>
+            <%} else {%>
+           <td>&nbsp;</td>
+             <%} %>
+             <td>
+                <asp:Button ID="btnRSVP" runat="server" Text="RSVP" OnClick="btnRSVP_Click" />
             </td>
         </tr>
         

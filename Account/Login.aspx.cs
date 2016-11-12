@@ -27,6 +27,8 @@ public partial class Account_Login : Page
                 {
                     Session["username"] = _username;
                     Session["usertype"] = user.rol;
+                    Session["userid"] = user.id;
+
                     Response.Redirect("~/event/CurrentEvents.aspx");
                 }
                 else

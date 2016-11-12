@@ -1,20 +1,35 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
+    <%if (!String.IsNullOrEmpty(Request.QueryString.Get("eventid"))){%>
+    <h2>Register</h2>
+   <% } else {%>
+    <h2>Enroll</h2>
+    <%} %>
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
 
     <div class="form-horizontal">
-        <h4>Create a new account.</h4>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
-        <div class="form-group">
+     <%if (Session["eventid"] != null && Session["userid"] != null) {  %>
+           <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtUsername" CssClass="col-md-2 control-label">User name</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="txtUsername" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUsername"
+                    CssClass="text-danger" ErrorMessage="The user name field is required." />
+            </div>
+              
+        </div>
+         <%} %>
+
+           <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="txtCWID" CssClass="col-md-2 control-label">CWID</asp:Label>
+            <div class="col-md-10">
+                <asp:TextBox runat="server" ID="txtCWID" CssClass="form-control" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCWID"
                     CssClass="text-danger" ErrorMessage="The user name field is required." />
             </div>
         </div>
@@ -43,7 +58,9 @@
                     CssClass="text-danger" ErrorMessage="The name field is required." />
             </div>
         </div>
-        <div class="form-group">
+        <%if (Session["eventid"] != null && Session["userid"] != null) {  %>
+    
+         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtPass" CssClass="col-md-2 control-label">Password</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="txtPass" TextMode="Password" CssClass="form-control" />
@@ -51,6 +68,7 @@
                     CssClass="text-danger" ErrorMessage="The password field is required." />
             </div>
         </div>
+        
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Confirm password</asp:Label>
             <div class="col-md-10">
@@ -66,6 +84,14 @@
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
             </div>
         </div>
+     <%} else {%>
+
+         <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <asp:Button runat="server" OnClick="Enroll_Click" Text="Enroll" CssClass="btn btn-default" />
+            </div>
+        </div>
+       <%} %>
     </div>
 </asp:Content>
 

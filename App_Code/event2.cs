@@ -89,6 +89,7 @@ public partial class user
     public Nullable<int> phone { get; set; }
     public string email { get; set; }
     public int rol { get; set; }
+    public Nullable<int> CWID { get; set; }
 
     public virtual ICollection<image> images { get; set; }
     public virtual ICollection<reservation> reservations { get; set; }

@@ -21,7 +21,7 @@ public partial class Manager_AllByCategory : System.Web.UI.Page
             var allTypes = from eveType in myEntities.eventTypes
                           join oneEvent in myEntities.events on eveType.Id equals oneEvent.type
                                where oneEvent.status==1
-                           select new { eveType.Name, eveType.events };
+                           select new { eveType.events };
 
             rptCategory.DataSource = allTypes.ToList();
             rptCategory.DataBind();

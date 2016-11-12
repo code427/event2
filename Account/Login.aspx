@@ -4,7 +4,7 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <h2><%: Title %>.</h2>
-        <asp:Label ID="lblError" class="text-danger" runat="server" Text=""></asp:Label>
+        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
 
     <div class="row">
         <div class="col-md-8">
