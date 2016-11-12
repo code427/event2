@@ -92,4 +92,24 @@ public partial class event_AddEditEvent : System.Web.UI.Page
         Response.Redirect("~/Account/Register.aspx?userid=" + Session["userid"] + "&eventid=" + Request.QueryString.Get("eventid"));
         
     }
+
+    protected void btnAppr_Click(object sender, EventArgs e)
+    {
+        using (event2Entities myEntities = new event2Entities())
+        {
+            @event myEvent;
+    
+            
+                myEvent = (from ev in myEntities.events
+                           where ev.id == _id
+                           select ev).Single();
+            
+
+            myEvent.status = 1;
+            myEntities.SaveChanges();
+            Response.Redirect("~/event/CurrentEvents.aspx?manageApplication=1");
+
+        }
+
+    }
 }

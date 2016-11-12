@@ -69,12 +69,14 @@
             <td>
                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
             </td>
-            <%} else {%>
-           <td>&nbsp;</td>
-             <%} %>
              <td>
+                <asp:Button ID="btnAppr" runat="server" Text="Approve" OnClick="btnAppr_Click" />
+            </td>
+            <%} else{ %>
+            <td>
                 <asp:Button ID="btnRSVP" runat="server" Text="RSVP" OnClick="btnRSVP_Click" />
             </td>
+            <%} %>
         </tr>
         
     </table>
