@@ -2,24 +2,45 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
  <h3>Current Events</h3>
-          
+           <table border="1">
+                        <tr><th>Name</th>
+                            <th>Description</th>
+                            <th>Time</th>
+                            <th>Deadline</th>
+                        </tr>
     <asp:Repeater ID="rptCategory" runat="server">
             <ItemTemplate> 
+                 
               <asp:Repeater ID="Repeater2" runat="server" DataSource='<%# Eval("events") %>'>
                 <HeaderTemplate>
-                    <ul>
+                  
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <li>
-                        <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# String.Concat("AddEditEvent.aspx?eventid=",Eval("id"))%>'></asp:HyperLink></li>
+                    
+                    <tr>
+                  <td>      <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# "AddEditEvent.aspx?eventid=" +Eval("id")+"&rsvp=1"%>'></asp:HyperLink>
+                        </td>
+                        <td>
+                            <%# Eval("description") %>
+
+                        </td>
+                        <td>
+                            <%# Eval("time") %>
+                        </td>
+                        <td>
+                            <%# Eval("deadline") %>
+                        </td>
+                    </tr>
+                  
                 </ItemTemplate>
                 <FooterTemplate>
-                    </ul>
+                
                 </FooterTemplate>
             </asp:Repeater>
 
 
         </ItemTemplate>
     </asp:Repeater>
+                   </table>
 </asp:Content>
 

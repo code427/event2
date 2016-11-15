@@ -64,15 +64,23 @@
             </td>
         </tr>
         <tr>
-            <%if (Session["username"] != null && Session["username"].Equals("admin"))
+           
+ <%if (Session["username"] != null && Request.QueryString["createEvent"]!=null )
               { %>
-            <td>
+           
+            
+             <td>
                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
             </td>
+<%} %>            
+             <%if (Session["username"] != null && Session["username"].Equals("admin"))
+              { %>
+           
              <td>
                 <asp:Button ID="btnAppr" runat="server" Text="Approve" OnClick="btnAppr_Click" />
             </td>
-            <%} else{ %>
+            <%} else  if (Session["username"] != null && Request.QueryString["rsvp"]!=null )
+              { %>
             <td>
                 <asp:Button ID="btnRSVP" runat="server" Text="RSVP" OnClick="btnRSVP_Click" />
             </td>

@@ -23,17 +23,26 @@ public partial class Manager_AllByCategory : System.Web.UI.Page
                 var allTypesApp = from eveType in myEntities.eventTypes
                                   join oneEvent in myEntities.events on eveType.Id equals oneEvent.type
                                   where oneEvent.status == 0
-                                  && oneEvent.time > DateTime.Now
                                   select new { eveType.events };
                 rptCategory.DataSource = allTypesApp.ToList();
 
             }
-            else { 
+            else if (!string.IsNullOrEmpty(Request.QueryString.Get("archivedEvent")))
+            {
+                var allArchived = from eveType in myEntities.eventTypes
+                               join oneEvent in myEntities.events on eveType.Id equals oneEvent.type
+                               where (oneEvent.status == 1
+                               && oneEvent.time <= DateTime.Now)
+                               select new { eveType.events };
+
+                rptCategory.DataSource = allArchived.ToList();
+            }
+            else{
 
             var allTypes = from eveType in myEntities.eventTypes
                           join oneEvent in myEntities.events on eveType.Id equals oneEvent.type
-                               where oneEvent.status==1
-                               && oneEvent.time > DateTime.Now
+                               where (oneEvent.status == 1 
+                               && oneEvent.time > DateTime.Now)
                            select new { eveType.events };
 
             rptCategory.DataSource = allTypes.ToList();
