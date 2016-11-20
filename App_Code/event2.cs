@@ -58,6 +58,7 @@ public partial class image
     public int status { get; set; }
     public System.DateTime postDate { get; set; }
     public string tag { get; set; }
+    public string name { get; set; }
 
     public virtual @event @event { get; set; }
     public virtual user user { get; set; }

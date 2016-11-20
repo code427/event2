@@ -1,13 +1,14 @@
 ﻿<%@ Page Title="Product by Category" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="CurrentEvents.aspx.cs" Inherits="Manager_AllByCategory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
- <h3>Current Events</h3>
+ <h3>Events</h3>
            <table border="1">
-                        <tr><th>Name</th>
+                        <thead><tr><th>Name</th>
                             <th>Description</th>
                             <th>Time</th>
                             <th>Deadline</th>
-                        </tr>
+                        
+                            </tr></thead>
     <asp:Repeater ID="rptCategory" runat="server">
             <ItemTemplate> 
                  

@@ -40,6 +40,7 @@
           <Property Name="status" Type="int" Nullable="false" />
           <Property Name="postDate" Type="datetime" Nullable="false" />
           <Property Name="tag" Type="nchar" MaxLength="255" />
+          <Property Name="name" Type="nchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="reservation">
           <Key>
@@ -187,6 +188,7 @@
           <Property Name="tag" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="event" Relationship="Self.FK_image_event" FromRole="image" ToRole="event" />
           <NavigationProperty Name="user" Relationship="Self.FK_image_user" FromRole="image" ToRole="users" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -336,6 +338,7 @@
           <EntitySetMapping Name="images">
             <EntityTypeMapping TypeName="event2Model.image">
               <MappingFragment StoreEntitySet="image">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="path" ColumnName="path" />
                 <ScalarProperty Name="eventid" ColumnName="eventid" />
