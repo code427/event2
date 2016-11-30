@@ -52,7 +52,7 @@ public partial class Account_Register : Page
             else
             {
                 user myUser = new user();
-                myUser.username = txtUsername.Text;
+                myUser.username = _username;
                 myUser.password = txtPass.Text;
                 myUser.email = txtEmail.Text;
                 myUser.name = txtName.Text;

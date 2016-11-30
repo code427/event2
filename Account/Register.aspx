@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <%if (!String.IsNullOrEmpty(Request.QueryString.Get("eventid"))){%>
+    <%if (String.IsNullOrEmpty(Request.QueryString.Get("eventid"))){%>
     <h2>Register</h2>
    <% } else {%>
     <h2>Enroll</h2>
@@ -13,7 +13,6 @@
     <div class="form-horizontal">
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
-     <%if (Session["eventid"] != null && Session["userid"] != null) {  %>
            <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtUsername" CssClass="col-md-2 control-label">User name</asp:Label>
             <div class="col-md-10">
@@ -23,7 +22,7 @@
             </div>
               
         </div>
-         <%} %>
+      
 
            <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtCWID" CssClass="col-md-2 control-label">CWID</asp:Label>
@@ -58,7 +57,7 @@
                     CssClass="text-danger" ErrorMessage="The name field is required." />
             </div>
         </div>
-        <%if (Session["eventid"] != null && Session["userid"] != null) {  %>
+        <%if (Session["eventid"] ==null || Session["userid"] == null) {  %>
     
          <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtPass" CssClass="col-md-2 control-label">Password</asp:Label>

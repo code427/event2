@@ -1,13 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AddEditEvent.aspx.cs" Inherits="event_AddEditEvent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
-       
+        <div>
+    <a name="sharebutton" type="button" href="http://www.facebook.com/sharer.php">Share to Facebook</a>  
+ 
+              </div>
     <%if (String.IsNullOrEmpty(Request.QueryString.Get("eventid")))
       {%>  <h1>Add/Edit Event Information</h1>
     <%}else{ %>
     <h1>Event Information</h1>
     <%} %>
      <table>
+         <tr><td></td><td></td></tr>
         <tr><td>Name: </td>
             <td>
                 <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
