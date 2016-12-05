@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Product by Category" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="CurrentEvents.aspx.cs" Inherits="Manager_AllByCategory" %>
+﻿<%@ Page Title="Product by Category" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ManageEvents.aspx.cs" Inherits="Manager_AllByCategory" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <link href="../css/table.css" rel="stylesheet" />
@@ -20,7 +20,7 @@
                 <ItemTemplate>
                     
                     <tr>
-                  <td>      <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# "AddEditEvent.aspx?eventid=" +Eval("id")+"&rsvp=1"%>'></asp:HyperLink>
+                  <td>      <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# "ApproveEvents.aspx?eventid=" +Eval("id")%>'></asp:HyperLink>
                         </td>
                         <td>
                             <%# Eval("description") %>

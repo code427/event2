@@ -56,12 +56,12 @@
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                      <%if (Session["username"] != null)
-                       { %>   <li><a runat="server" href="~/event/AddEditEvent.aspx?createEvent=1">Create Event</a></li>
+                       { %>   <li><a runat="server" href="~/event/Add.aspx?createEvent=1">Create Event</a></li>
 
                        
                         <%} %>
                      <%if (Session["username"] != null && Session["username"].Equals("admin"))
-                       { %>   <li><a runat="server" href="~/event/CurrentEvents.aspx?manageApplication=1">Event Management</a></li>
+                       { %>   <li><a runat="server" href="~/event/ManageEvents.aspx?manageApplication=1">Event Management</a></li>
                          <%} %>
                      <li><a runat="server" href="~/event/CurrentEvents.aspx?archivedEvent=1">Archived Event</a></li>
 
