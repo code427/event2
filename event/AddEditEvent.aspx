@@ -97,7 +97,7 @@
         SelectMethod="ListView1_GetData" InsertMethod="ListView1_InsertItem" DeleteMethod="ListView1_DeleteItem">
       
         <InsertItemTemplate>
-             <%if (!String.IsNullOrEmpty(Request.QueryString.Get("archivedEvent")))
+             <%if (!String.IsNullOrEmpty(Request.QueryString.Get("archivedEvent"))&&Session["userid"]!=null)
        {%>
             <li>
                 Tags: 
@@ -124,7 +124,6 @@
                 Name: <asp:Label ID="lblToolTip" runat="server"
                     Text='<%# Item.name %>' ></asp:Label> <br />
               <asp:Image ID="imgUrl" runat="server" ImageUrl='<%# Item.path %>' />
-                <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandName="Delete" CausesValidation="false" />
             </li>
         </ItemTemplate>
 

@@ -52,7 +52,6 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/event/CurrentEvents.aspx">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                      <%if (Session["username"] != null)
@@ -62,6 +61,7 @@
                         <%} %>
                      <%if (Session["username"] != null && Session["username"].Equals("admin"))
                        { %>   <li><a runat="server" href="~/event/ManageEvents.aspx?manageApplication=1">Event Management</a></li>
+                        <li><a runat="server" href="~/event/imgManagement.aspx">Image Management</a></li>
                          <%} %>
                      <li><a runat="server" href="~/event/CurrentEvents.aspx?archivedEvent=1">Archived Event</a></li>
 

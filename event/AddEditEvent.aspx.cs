@@ -153,7 +153,8 @@ public partial class event_AddEditEvent : System.Web.UI.Page
         if(!string.IsNullOrEmpty(Request.QueryString.Get("eventid"))){
         var myEntity = new event2Entities();
         return from p in myEntity.images
-               where p.eventid == eventId
+               where p.eventid == eventId 
+               && p.status == 1
                select p;
         }
         return null;
