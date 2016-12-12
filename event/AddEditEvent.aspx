@@ -97,7 +97,7 @@
         SelectMethod="ListView1_GetData" InsertMethod="ListView1_InsertItem" DeleteMethod="ListView1_DeleteItem">
       
         <InsertItemTemplate>
-             <%if (!String.IsNullOrEmpty(Request.QueryString.Get("archived")))
+             <%if (!String.IsNullOrEmpty(Request.QueryString.Get("archivedEvent")))
        {%>
             <li>
                 Tags: 

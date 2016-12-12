@@ -16,7 +16,14 @@
                 <ItemTemplate>
                     
                     <tr>
-                  <td>      <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# "AddEditEvent.aspx?eventid=" +Eval("id")+"&rsvp=1"%>'></asp:HyperLink>
+                  <td> 
+                      <%if (Request.QueryString.Get("archivedEvent") == null) {%> 
+                      <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# "AddEditEvent.aspx?eventid=" +Eval("id")+"&rsvp=1"%>'></asp:HyperLink>
+
+                        <%} else {%>
+                    <asp:HyperLink ID="HyperLink2" runat="server" Text='<%# Eval("name") %>' NavigateUrl='<%# "AddEditEvent.aspx?eventid=" +Eval("id")+"&archivedEvent=1"%>'></asp:HyperLink>
+                        <%} %>
+                      
                         </td>
                         <td>
                             <%# Eval("description") %>
