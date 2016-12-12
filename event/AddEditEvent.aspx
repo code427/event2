@@ -82,7 +82,7 @@
              <td>
                 <asp:Button ID="btnAppr" runat="server" Text="Approve" OnClick="btnAppr_Click" />
             </td>
-            <%} else  if (Session["username"] != null && Request.QueryString["rsvp"]!=null )
+            <%} else  if (Request.QueryString["rsvp"]!=null )
               { %>
             <td>
                 <asp:Button ID="btnRSVP" runat="server" Text="RSVP" OnClick="btnRSVP_Click" />
@@ -91,13 +91,13 @@
         </tr>
         
     </table>
-   
+    <asp:Label ID="ErrorMessage"  style="color:red;" runat="server" Text=""></asp:Label>
    
         <asp:ListView ID="ListView1" DataKeyNames="Id"   InsertItemPosition="LastItem"  runat="server" ItemType="image"
         SelectMethod="ListView1_GetData" InsertMethod="ListView1_InsertItem" DeleteMethod="ListView1_DeleteItem">
       
         <InsertItemTemplate>
-             <%if (Session["username"]!=null&&String.IsNullOrEmpty(Request.QueryString.Get("rsvp")))
+             <%if (!String.IsNullOrEmpty(Request.QueryString.Get("archived")))
        {%>
             <li>
                 Tags: 

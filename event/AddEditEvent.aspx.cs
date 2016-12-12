@@ -90,7 +90,38 @@ public partial class event_AddEditEvent : System.Web.UI.Page
     }
     protected void btnRSVP_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/event/RSVP.aspx?userid=" + Session["userid"] + "&eventid=" + Request.QueryString.Get("eventid"));
+        int userid = Convert.ToInt32(Session["userid"]);
+        int eventid = Convert.ToInt32(Request.QueryString.Get("eventid"));
+        if (Session["userid"] == null)
+        {
+            Response.Redirect("~/Account/Login.aspx");
+
+        }
+        else
+        {
+            using (event2Entities myEntity = new event2Entities())
+            {
+                var user = (from u in myEntity.reservations
+                            where u.userid == userid
+                            && u.eventid == eventid
+                            select u).SingleOrDefault();
+
+                if (user != null)
+                {
+                    ErrorMessage.Text = "Already reserved";
+                }
+                else
+                {
+                    reservation res = new reservation();
+                    res.userid = Convert.ToInt32(Session["userid"]);
+                    res.eventid = Convert.ToInt32(Request.QueryString.Get("eventid"));
+                    res.registerTime = DateTime.Now;
+                    myEntity.reservations.Add(res);
+                    myEntity.SaveChanges();
+         
+                }
+            }
+        }
         
     }
 

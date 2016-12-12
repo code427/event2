@@ -14,33 +14,29 @@ public partial class Manager_AllByCategory : System.Web.UI.Page
 
             if (!string.IsNullOrEmpty(Request.QueryString.Get("manageApplication")))
             {
-                var allTypesApp = from eveType in myEntities.eventTypes
-                                  join oneEvent in myEntities.events on eveType.Id equals oneEvent.type
-                                  where oneEvent.status == 0
-                                  select new { eveType.events };
+                var allTypesApp = from e2 in myEntities.events.Include("eventType")
+                                  where e2.status == 0 
+                                  select e2;
                 rptCategory.DataSource = allTypesApp.ToList();
 
             }
             else if (!string.IsNullOrEmpty(Request.QueryString.Get("archivedEvent")))
             {
-                var allArchived = from eveType in myEntities.eventTypes
-                               join oneEvent in myEntities.events on eveType.Id equals oneEvent.type
-                               where (oneEvent.status == 1
-                               && oneEvent.time <= DateTime.Now)
-                               select new { eveType.events };
+                var allArchived = from e2 in myEntities.events.Include("eventType")
+                                  where e2.time <DateTime.Now
+                                  select e2;
 
                 rptCategory.DataSource = allArchived.ToList();
             }
             else{
 
-            var allTypes = from eveType in myEntities.eventTypes
-                          join oneEvent in myEntities.events on eveType.Id equals oneEvent.type
-                               where (oneEvent.status == 1 
-                               && oneEvent.time > DateTime.Now)
-                           select new { eveType.events };
+            var allTypes2 = from e2 in myEntities.events.Include("eventType")
+                            where e2.status==1 && e2.time > DateTime.Now
+                            select e2;
 
-            rptCategory.DataSource = allTypes.ToList();
-
+            rptCategory.DataSource = allTypes2.ToList();
+               
+                
             } 
             rptCategory.DataBind();
         }

@@ -66,20 +66,5 @@ public partial class Account_Register : Page
         }
 
     }
-    protected void Enroll_Click(object sender, EventArgs e)
-    {
-        string _username = txtUsername.Text;
-        using (event2Entities myEntity2 = new event2Entities())
-        {
-            reservation myReservation = new reservation();
-                myReservation.eventid=Convert.ToInt32(Request.QueryString.Get("eventid"));
-                myReservation.userid = Convert.ToInt32(Request.QueryString.Get("userid"));
-                myReservation.registerTime = DateTime.Now;
 
-                myEntity2.reservations.Add(myReservation);
-                myEntity2.SaveChanges();
-                Response.Redirect("~/event/CurrentEvents.aspx");
-            
-        }
-    }
 }

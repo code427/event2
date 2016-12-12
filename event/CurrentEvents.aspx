@@ -11,12 +11,8 @@
                         
                             </tr></thead>
     <asp:Repeater ID="rptCategory" runat="server">
-            <ItemTemplate> 
-                 
-              <asp:Repeater ID="Repeater2" runat="server" DataSource='<%# Eval("events") %>'>
-                <HeaderTemplate>
-                  
-                </HeaderTemplate>
+         
+            
                 <ItemTemplate>
                     
                     <tr>
@@ -35,13 +31,7 @@
                     </tr>
                   
                 </ItemTemplate>
-                <FooterTemplate>
-                
-                </FooterTemplate>
-            </asp:Repeater>
-
-
-        </ItemTemplate>
+          
     </asp:Repeater>
                    </table>
 </asp:Content>
