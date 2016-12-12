@@ -44,6 +44,6 @@ public partial class Manager_AllByCategory : System.Web.UI.Page
             } 
             rptCategory.DataBind();
         }
-       //}
+      
     }
 }

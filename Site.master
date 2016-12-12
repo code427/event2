@@ -70,8 +70,9 @@
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
                                
-                                      <%if (Session["username"] != null)
-                       { %> 
+                                      <%if (Session["username"] != null) { %>                        
+                                 <li><a runat="server" href="~/event/myRSVP">My Reservations</a></li>
+                                <li><a runat="server" href="~/Contact">My Event</a></li>
                                  <li><a runat="server" href="~/event/Logout.aspx">Log Out</a></li> 
                             <%} else {%>
                                    <li><a runat="server" href="~/Account/Login">Log in</a></li>
@@ -81,7 +82,7 @@
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
-                            hilogout
+                            
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %>!</a></li>
                                 <li>

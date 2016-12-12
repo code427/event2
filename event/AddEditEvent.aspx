@@ -76,7 +76,7 @@
                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
             </td>
 <%} %>            
-             <%if (Session["username"] != null && Session["username"].Equals("admin"))
+             <%if (Session["username"] != null && Session["username"].Equals("admin")&& Request.QueryString["manageApplication"]!=null)
               { %>
            
              <td>
@@ -97,7 +97,8 @@
         SelectMethod="ListView1_GetData" InsertMethod="ListView1_InsertItem" DeleteMethod="ListView1_DeleteItem">
       
         <InsertItemTemplate>
-             <%if (Session["username"]!=null) {%>
+             <%if (Session["username"]!=null&&String.IsNullOrEmpty(Request.QueryString.Get("rsvp")))
+       {%>
             <li>
                 Tags: 
                 <asp:RequiredFieldValidator ID="reqDesc" runat="server" 

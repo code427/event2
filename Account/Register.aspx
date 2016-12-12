@@ -1,11 +1,8 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Register.aspx.cs" Inherits="Account_Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <%if (String.IsNullOrEmpty(Request.QueryString.Get("eventid"))){%>
-    <h2>Register</h2>
-   <% } else {%>
-    <h2>Enroll</h2>
-    <%} %>
+  
+     <h2>Register</h2>
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
@@ -57,7 +54,6 @@
                     CssClass="text-danger" ErrorMessage="The name field is required." />
             </div>
         </div>
-        <%if (Session["eventid"] ==null || Session["userid"] == null) {  %>
     
          <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="txtPass" CssClass="col-md-2 control-label">Password</asp:Label>
@@ -83,14 +79,12 @@
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
             </div>
         </div>
-     <%} else {%>
 
          <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <asp:Button runat="server" OnClick="Enroll_Click" Text="Enroll" CssClass="btn btn-default" />
             </div>
         </div>
-       <%} %>
+
     </div>
 </asp:Content>
 

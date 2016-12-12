@@ -90,7 +90,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
     }
     protected void btnRSVP_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Account/Register.aspx?userid=" + Session["userid"] + "&eventid=" + Request.QueryString.Get("eventid"));
+        Response.Redirect("~/event/RSVP.aspx?userid=" + Session["userid"] + "&eventid=" + Request.QueryString.Get("eventid"));
         
     }
 
