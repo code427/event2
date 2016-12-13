@@ -83,6 +83,12 @@ public partial class event_AddEditEvent : System.Web.UI.Page
             myEvent.organizer = txtOrganizer.Text;
             myEvent.type = Convert.ToInt32(ddlType.SelectedValue);
             myEvent.status = 0;
+            myEvent.attendance = Convert.ToInt32(txtAttendance.Text);
+            if (Session["username"].Equals("admin"))
+            {
+                myEvent.status = 1;
+            }
+           
             myEntities.SaveChanges();
             Response.Redirect("~/event/CurrentEvents.aspx");
         

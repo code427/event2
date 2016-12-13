@@ -66,9 +66,15 @@
 
             </td>
         </tr>
+           <tr><td>Attendance: </td>
+            <td>
+                    <asp:TextBox ID="txtAttendance" runat="server"></asp:TextBox>
+
+            </td>
+        </tr>
         <tr>
            
- <%if (Session["username"] != null && Request.QueryString["createEvent"]!=null )
+ <%if (Session["username"] != null && Session["username"].Equals("admin") )
               { %>
            
             
