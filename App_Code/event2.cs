@@ -70,6 +70,10 @@ public partial class reservation
     public int eventid { get; set; }
     public int userid { get; set; }
     public System.DateTime registerTime { get; set; }
+    public string firstName { get; set; }
+    public string lastName { get; set; }
+    public Nullable<int> CWID { get; set; }
+    public string email { get; set; }
 
     public virtual @event @event { get; set; }
     public virtual user user { get; set; }

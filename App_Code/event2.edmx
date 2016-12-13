@@ -50,6 +50,10 @@
           <Property Name="eventid" Type="int" Nullable="false" />
           <Property Name="userid" Type="int" Nullable="false" />
           <Property Name="registerTime" Type="datetime" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CWID" Type="int" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -215,6 +219,10 @@
           <Property Name="registerTime" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="event" Relationship="Self.FK_reservation_event" FromRole="reservation" ToRole="event" />
           <NavigationProperty Name="user" Relationship="Self.FK_reservation_user" FromRole="reservation" ToRole="users" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CWID" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_image_event">
           <End Role="event" Type="Self.event" Multiplicity="1" />
@@ -366,6 +374,10 @@
           <EntitySetMapping Name="reservations">
             <EntityTypeMapping TypeName="event2Model.reservation">
               <MappingFragment StoreEntitySet="reservation">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="CWID" ColumnName="CWID" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="eventid" ColumnName="eventid" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
