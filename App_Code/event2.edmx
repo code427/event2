@@ -10,7 +10,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="time" Type="smalldatetime" Nullable="false" />
           <Property Name="duration" Type="int" Nullable="false" />
           <Property Name="location" Type="nchar" MaxLength="10" Nullable="false" />
@@ -52,7 +52,7 @@
           <Property Name="registerTime" Type="datetime" Nullable="false" />
           <Property Name="firstName" Type="nvarchar" MaxLength="50" />
           <Property Name="lastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="CWID" Type="int" />
+          <Property Name="CWID" Type="nvarchar" MaxLength="20" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="users">
@@ -63,10 +63,10 @@
           <Property Name="username" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="password" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="name" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="phone" Type="int" />
+          <Property Name="phone" Type="nchar" MaxLength="20" />
           <Property Name="email" Type="nchar" MaxLength="255" />
           <Property Name="rol" Type="int" Nullable="false" />
-          <Property Name="CWID" Type="int" />
+          <Property Name="CWID" Type="nchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_event_eventType">
           <End Role="eventType" Type="Self.eventType" Multiplicity="1" />
@@ -164,7 +164,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="time" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="duration" Type="Int32" Nullable="false" />
           <Property Name="location" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
@@ -202,12 +202,12 @@
           <Property Name="username" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="phone" Type="Int32" />
+          <Property Name="phone" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
           <Property Name="email" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
           <Property Name="rol" Type="Int32" Nullable="false" />
           <NavigationProperty Name="images" Relationship="Self.FK_image_user" FromRole="users" ToRole="image" />
           <NavigationProperty Name="reservations" Relationship="Self.FK_reservation_user" FromRole="users" ToRole="reservation" />
-          <Property Name="CWID" Type="Int32" />
+          <Property Name="CWID" Type="String" MaxLength="20" Unicode="true" FixedLength="true" />
         </EntityType>
         <EntityType Name="reservation">
           <Key>
@@ -221,7 +221,7 @@
           <NavigationProperty Name="user" Relationship="Self.FK_reservation_user" FromRole="reservation" ToRole="users" />
           <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CWID" Type="Int32" />
+          <Property Name="CWID" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_image_event">

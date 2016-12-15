@@ -56,8 +56,9 @@ public partial class Account_Register : Page
                 myUser.password = txtPass.Text;
                 myUser.email = txtEmail.Text;
                 myUser.name = txtName.Text;
-                myUser.phone = Convert.ToInt32(txtPhone.Text);
+                myUser.phone = txtPhone.Text;
                 myUser.rol = 2;
+                myUser.CWID = txtCWID.Text;
 
                 myEntity.users.Add(myUser);
                 myEntity.SaveChanges();

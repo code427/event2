@@ -28,7 +28,7 @@ public partial class event_RSVP : System.Web.UI.Page
             {
                 firstName.Text = oneUser.name;
                 lastName.Text = oneUser.name;
-                CWID.Text = Convert.ToString(oneUser.CWID);
+                CWID.Text = oneUser.CWID;
                 email.Text = oneUser.email;
             }
         }

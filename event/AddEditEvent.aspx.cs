@@ -134,6 +134,22 @@ public partial class event_AddEditEvent : System.Web.UI.Page
 
 
 
+    protected void btnDel_Click(object sender, EventArgs e)
+    {
+        using (var myEntities = new event2Entities())
+        {
+            int _eid = Convert.ToInt32(Request.QueryString.Get("eventid"));
+            var Delevent = (from evt in myEntities.events
+                       where evt.id == _eid
+                       select evt).Single();
+            myEntities.events.Remove(Delevent);
+            myEntities.SaveChanges();
+
+        }
+        Response.Redirect("~/event/CurrentEvents.aspx");
+
+    }
+
     //add img
     public IQueryable ListView1_GetData([QueryString("eventid")] int eventId)
     {

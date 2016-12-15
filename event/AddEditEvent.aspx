@@ -81,13 +81,17 @@
              <td>
                 <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
             </td>
+             <td>
+                <asp:Button ID="Button1" runat="server" Text="Delete" OnClick="btnDel_Click" />
+            </td>
 <%} %>            
              <%if (Session["username"] != null && Session["username"].Equals("admin")&& Request.QueryString["manageApplication"]!=null)
               { %>
            
              <td>
-                <asp:Button ID="btnAppr" runat="server" Text="Approve" OnClick="btnAppr_Click" />
+                <asp:Button ID="btnAppr" runat="server" Text="Approve" OnClick="btnDel_Click" />
             </td>
+            
             <%} else  if (Request.QueryString["rsvp"]!=null )
               { %>
             <td>
@@ -120,6 +124,7 @@
                 ImageUrl: <asp:FileUpload ID="FileUpload1" runat="server" /> <br />
                 <asp:CustomValidator ID="cusImage" runat="server" ErrorMessage="select a valid .jpg file"></asp:CustomValidator>
                 <asp:Button ID="btnInsert" runat="server" Text="Insert" CommandName="Insert"/>
+      
             </li>
             <%} %>
         </InsertItemTemplate>
@@ -131,6 +136,8 @@
                     Text='<%# Item.name %>' ></asp:Label> <br />
               <asp:Image ID="imgUrl" runat="server" ImageUrl='<%# Item.path %>' />
             </li>
+                      <asp:Button ID="ButtonDelete" runat="server" Text="Delete" CommandName="Delete"/>
+
         </ItemTemplate>
 
     </asp:ListView>

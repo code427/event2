@@ -22,7 +22,7 @@
                                <%# Eval("id") %>
 
                         </td>
-                  <td>      <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("event.name") %>' NavigateUrl='<%# "AddEditEvent.aspx?eventid=" +Eval("id")+"&rsvp=1"%>'></asp:HyperLink>
+                  <td>      <asp:HyperLink ID="HyperLink1" runat="server" Text='<%# Eval("event.name") %>' NavigateUrl='<%# "AddEditEvent.aspx?eventid=" +Eval("eventid")+"&rsvp=1"%>'></asp:HyperLink>
                         </td>
                     
                         <td>

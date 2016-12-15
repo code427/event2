@@ -72,7 +72,7 @@ public partial class reservation
     public System.DateTime registerTime { get; set; }
     public string firstName { get; set; }
     public string lastName { get; set; }
-    public Nullable<int> CWID { get; set; }
+    public string CWID { get; set; }
     public string email { get; set; }
 
     public virtual @event @event { get; set; }
@@ -91,10 +91,10 @@ public partial class user
     public string username { get; set; }
     public string password { get; set; }
     public string name { get; set; }
-    public Nullable<int> phone { get; set; }
+    public string phone { get; set; }
     public string email { get; set; }
     public int rol { get; set; }
-    public Nullable<int> CWID { get; set; }
+    public string CWID { get; set; }
 
     public virtual ICollection<image> images { get; set; }
     public virtual ICollection<reservation> reservations { get; set; }
