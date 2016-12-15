@@ -135,8 +135,11 @@
                 Name: <asp:Label ID="lblToolTip" runat="server"
                     Text='<%# Item.name %>' ></asp:Label> <br />
               <asp:Image ID="imgUrl" runat="server" ImageUrl='<%# Item.path %>' />
+              <%if(Session["username"].Equals("admin")){ %>
+                
+                   <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandName="Delete" CausesValidation="false" />
+            <%} %>
             </li>
-                      <asp:Button ID="ButtonDelete" runat="server" Text="Delete" CommandName="Delete"/>
 
         </ItemTemplate>
 
