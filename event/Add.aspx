@@ -14,55 +14,55 @@
          <tr><td></td><td></td></tr>
         <tr><td>Name: </td>
             <td>
-                <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtName" runat="server" CssClass="css-input"></asp:TextBox>
             </td>
 
         </tr>
         <tr><td>Description: </td>
             <td>
-                                <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
+                                <asp:TextBox TextMode="MultiLine" ID="txtDescription" runat="server" CssClass="css-input"></asp:TextBox>
 
             </td>
         </tr>
         <tr><td>Location: </td>
             <td>
-                                <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtLocation" runat="server" CssClass="css-input"></asp:TextBox>
 
             </td>
         </tr>
         <tr>
             <td>Type: </td>
             <td><asp:DropDownList ID="ddlType" runat="server"
-                DataTextField="name" DataValueField="id" SelectMethod="ddlType_GetData" ></asp:DropDownList></td>
+                DataTextField="name" DataValueField="id" SelectMethod="ddlType_GetData"  CssClass="css-input" ></asp:DropDownList></td>
         </tr>
         <tr><td>Fee: </td>
             <td>
-                    <asp:TextBox ID="txtFee" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtFee" runat="server"  CssClass="css-input"></asp:TextBox>
 
             </td>
         </tr>
                 <tr><td>Time: </td>
             <td>
-                    <asp:TextBox ID="txtTime" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtTime" runat="server" CssClass="css-input"></asp:TextBox>
 
             </td>
         </tr>
                 <tr><td>Duration: </td>
             <td>
-                                <asp:TextBox ID="txtDuration" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtDuration" runat="server" CssClass="css-input"></asp:TextBox>
 
             </td>
         </tr>
 
                        <tr><td>Deadline: </td>
             <td>
-                    <asp:TextBox ID="txtDeadline" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtDeadline" runat="server" CssClass="css-input"></asp:TextBox>
 
             </td>
         </tr>
                        <tr><td>Organizer: </td>
             <td>
-                    <asp:TextBox ID="txtOrganizer" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtOrganizer" runat="server" CssClass="css-input"></asp:TextBox>
 
             </td>
         </tr>
@@ -73,19 +73,19 @@
            
             
              <td>
-                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+                <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" CssClass="button" />
             </td>
 <%} %>            
              <%if (Session["username"] != null && Session["username"].Equals("admin"))
               { %>
            
              <td>
-                <asp:Button ID="btnAppr" runat="server" Text="Approve" OnClick="btnAppr_Click" />
+                <asp:Button ID="btnAppr" runat="server" Text="Approve" OnClick="btnAppr_Click" CssClass="button" />
             </td>
             <%} else  if (Session["username"] != null && Request.QueryString["rsvp"]!=null )
               { %>
             <td>
-                <asp:Button ID="btnRSVP" runat="server" Text="RSVP" OnClick="btnRSVP_Click" />
+                <asp:Button ID="btnRSVP" runat="server" Text="RSVP" OnClick="btnRSVP_Click" CssClass="button"  />
             </td>
             <%} %>
         </tr>
