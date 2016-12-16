@@ -7,10 +7,12 @@ using System.Web.UI.WebControls;
 using System.Diagnostics;
 using System.Web.ModelBinding;
 
+
+//created by Zhengdong
 public partial class event_AddEditEvent : System.Web.UI.Page
 {
     int _id = -1;
-
+    //load event details
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -36,13 +38,14 @@ public partial class event_AddEditEvent : System.Web.UI.Page
                     txtDeadline.Text = Convert.ToString(oneEvent.deadline);
                     txtOrganizer.Text = Convert.ToString(oneEvent.organizer);
                     ddlType.SelectedValue = oneEvent.type.ToString();
+                    txtAttendance.Text = Convert.ToString(oneEvent.attendance);
                 }
             }
 
         }
     }
 
-
+    //get dropdown list items from db
     public IEnumerable<eventType> ddlType_GetData()
     {
         using (event2Entities myEntities = new event2Entities())
@@ -54,7 +57,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
     }
 
 
-
+    //save event to db
     protected void btnSave_Click(object sender, EventArgs e)
     {
       
@@ -94,6 +97,8 @@ public partial class event_AddEditEvent : System.Web.UI.Page
         
         }
     }
+
+    //save rsvp info to db
     protected void btnRSVP_Click(object sender, EventArgs e)
     {
         int userid = Convert.ToInt32(Session["userid"]);
@@ -112,6 +117,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
         
     }
 
+    //approve event, set event status to 1
     protected void btnAppr_Click(object sender, EventArgs e)
     {
         using (event2Entities myEntities = new event2Entities())
@@ -133,7 +139,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
     }
 
 
-
+    //delete event
     protected void btnDel_Click(object sender, EventArgs e)
     {
         using (var myEntities = new event2Entities())
@@ -163,6 +169,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
         return null;
     }
 
+    //insert image
     public void ListView1_InsertItem([QueryString("eventid")] int eventId)
     {
         image img = new image();
@@ -197,7 +204,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
         }
     }
 
-    // The id parameter name should match the DataKeyNames value set on the control
+    //delete image
     public void ListView1_DeleteItem(int id)
     {
         using (var myEntities = new event2Entities())

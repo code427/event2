@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.ModelBinding;
 
+//created by zhengdong
+
 public partial class ManagePhotoAlbum : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -19,6 +21,8 @@ public partial class ManagePhotoAlbum : System.Web.UI.Page
     //     int startRowIndex
     //     out int totalRowCount
     //     string sortByExpression
+
+        //get images by event id
     public IQueryable ListView1_GetData([QueryString("eventid")] int eventId)
     {
         var myEntity = new event2Entities();
@@ -26,7 +30,7 @@ public partial class ManagePhotoAlbum : System.Web.UI.Page
                where p.eventid == eventId
                select p;
     }
-
+    // save  image to file system
     public void ListView1_InsertItem([QueryString("eventid")] int eventId)
     {
         image img = new image();
@@ -59,7 +63,7 @@ public partial class ManagePhotoAlbum : System.Web.UI.Page
         }
     }
 
-    // The id parameter name should match the DataKeyNames value set on the control
+   //delete an image
     public void ListView1_DeleteItem(int id)
     {
         using (var myEntities = new event2Entities()) { 

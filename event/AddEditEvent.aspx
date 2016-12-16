@@ -41,7 +41,7 @@
 
             </td>
         </tr>
-                <tr><td>Time: </td>
+                <tr><td>Date/Time: </td>
             <td>
                     <asp:TextBox ID="txtTime" runat="server" CssClass="css-input"></asp:TextBox>
 
@@ -72,6 +72,8 @@
 
             </td>
         </tr>
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Please enter attendance" ControlToValidate="txtAttendance"></asp:RequiredFieldValidator>
+
         <tr>
            
  <%if (Session["username"] != null && Session["username"].Equals("admin") )
@@ -101,6 +103,7 @@
         </tr>
         
     </table>
+    <asp:Label ID="Label1" runat="server" Text="Label">Date/Time Format: M/DD/YYYY HH:MM:SS AM </asp:Label>
     <asp:Label ID="ErrorMessage"  style="color:red;" runat="server" Text=""></asp:Label>
    
         <asp:ListView ID="ListView1" DataKeyNames="Id"   InsertItemPosition="LastItem"  runat="server" ItemType="image"

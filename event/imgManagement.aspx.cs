@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.ModelBinding;
 
+//created by Pranali
 
 public partial class event_imgManagement : System.Web.UI.Page
 {
@@ -15,6 +16,8 @@ public partial class event_imgManagement : System.Web.UI.Page
     }
 
     //add img
+
+   //list all images not approved yet
     public IQueryable ListView1_GetData()
     {
             var myEntity = new event2Entities();
@@ -24,7 +27,7 @@ public partial class event_imgManagement : System.Web.UI.Page
                    select p;
     }
 
-    // The id parameter name should match the DataKeyNames value set on the control
+   //delete image
     public void ListView1_DeleteItem(int id)
     {
         using (var myEntities = new event2Entities())
@@ -38,7 +41,7 @@ public partial class event_imgManagement : System.Web.UI.Page
         }
     }
 
-    // The id parameter name should match the DataKeyNames value set on the control
+  // approve image
     public void ListView1_UpdateItem(int id)
     {
         image item = null;

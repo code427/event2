@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+//created by Pranali
 
 public partial class event_RSVP : System.Web.UI.Page
 {
+    //populate user info
     protected void Page_Load(object sender, EventArgs e)
     {
         if(!string.IsNullOrEmpty(Request.QueryString.Get("eventName"))){
@@ -35,7 +37,7 @@ public partial class event_RSVP : System.Web.UI.Page
 
     }
 
-
+    //detect duplicate rsvp, and reserve a event
     protected void Unnamed_Click(object sender, EventArgs e)
     {
         int userid = Convert.ToInt32(Session["userid"]);

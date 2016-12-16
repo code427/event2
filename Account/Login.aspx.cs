@@ -6,14 +6,14 @@ using System.Web.UI;
 using event2;
 using System.Linq;
 
-
+//cerated by Pranali, 
 public partial class Account_Login : Page
 {
         protected void Page_Load(object sender, EventArgs e)
         {
            
         }
-
+    //detect wether an user with same name already exist in the database
         protected void LogIn(object sender, EventArgs e)
         {
             string _username = txtUsername.Text;

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+//created by Zhengdong
+//display a list of all reservations
 public partial class event_allReservations : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)

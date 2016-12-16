@@ -7,10 +7,11 @@ using System.Web.UI.WebControls;
 using System.Diagnostics;
 using System.Web.ModelBinding;
 
+//created by Zhengdong 
 public partial class event_AddEditEvent : System.Web.UI.Page
 {
     int _id = -1;
-
+    //populate fields with data from db of correspodnign event id
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -42,7 +43,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
         }
     }
 
-
+    // populate type dropdown list
     public IEnumerable<eventType> ddlType_GetData()
     {
         using (event2Entities myEntities = new event2Entities())
@@ -54,7 +55,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
     }
 
 
-
+    //after create event button clicked, get value from form and save to dv
     protected void btnSave_Click(object sender, EventArgs e)
     {
       
@@ -88,6 +89,8 @@ public partial class event_AddEditEvent : System.Web.UI.Page
         
         }
     }
+
+    //after rsvp button clicked, insert a row in reservation table
     protected void btnRSVP_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/Account/Register.aspx?userid=" + Session["userid"] + "&eventid=" + Request.QueryString.Get("eventid"));
@@ -130,7 +133,7 @@ public partial class event_AddEditEvent : System.Web.UI.Page
 
     
 
-    // The id parameter name should match the DataKeyNames value set on the control
+    // delete a image
     public void ListView1_DeleteItem(int id)
     {
         using (var myEntities = new event2Entities())

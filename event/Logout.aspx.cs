@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+//created by Pranali
+//crear session 
 public partial class event_Logout : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)

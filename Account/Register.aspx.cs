@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web.UI;
 using event2;
 
+//created by Pranali
 public partial class Account_Register : Page
 {
     int userid = -1;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //if is navigated thorugh another page, fill out the existing info
         if (!string.IsNullOrEmpty(Request.QueryString.Get("userid")))
         {
             userid = Convert.ToInt32(Request.QueryString.Get("userid"));
@@ -33,7 +34,7 @@ public partial class Account_Register : Page
         }
     }
 
-
+    //after register button clicked, get the value from the form and save in db
     protected void CreateUser_Click(object sender, EventArgs e)
     {
 

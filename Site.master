@@ -78,7 +78,6 @@
                                         { if( !Session["username"].Equals("admin")){ %> 
                                                        
                                  <li><a runat="server" href="~/event/myRSVP">My Reservations</a></li>
-                            <li><a runat="server" href="~/Contact">My Event</a></li>                    
                                    <%} %>             <li><a runat="server" href="~/event/Logout.aspx">Log Out</a></li> 
                             <%} else {%>
                                    <li><a runat="server" href="~/Account/Login">Log in</a></li>

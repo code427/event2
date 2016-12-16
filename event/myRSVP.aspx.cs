@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+//created by Pranali
 
 public partial class event_myRSVP : System.Web.UI.Page
 {
+    //get a list of my past RSVPs
     protected void Page_Load(object sender, EventArgs e)
     {
         int _id = 0;
